@@ -31,6 +31,6 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           port: ${{ secrets.FTP_PORT }}
           local-dir: ./dist/
-          server-dir: ./home2/eazworld/public_html/
+          server-dir: ./public_html/
       - name: Verify Build Output
         run: ls -la ./dist
