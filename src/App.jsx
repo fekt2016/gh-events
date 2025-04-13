@@ -13,6 +13,8 @@ function App() {
         <h1>Learn & Master GitHub Actions</h1>
         <h1>Learn & Master GitHub Actions</h1>
         <h1>Learn & Master GitHub Actions</h1>
+        <h1>Learn & Master GitHub Actions</h1>
+        <h1>Learn & Master GitHub Actions</h1>
       </header>
       <MainContent />
     </>

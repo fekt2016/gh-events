@@ -29,8 +29,8 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          port: ${{ secrets.FTP_PORT }}
           local-dir: ./dist/
-          server-dir: ./public_html/
+          server-dir: /home2/eazworld/public_html/ # Verified exact path
+          protocol: ftpes
       - name: Verify Build Output
         run: ls -la ./dist
