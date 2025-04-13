@@ -1,9 +1,5 @@
 name: Events demo
 on:
-  pull_request:
-    types:
-      - opened
-  workflow_dispatch:
   push:
     branches:
       - main
