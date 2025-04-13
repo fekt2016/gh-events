@@ -24,15 +24,5 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           port: 21
-          protocol: ftps-legacy
           local-dir: ./dist/
           server-dir: /home2/eazworld/public_html/
-          security: loose # Correct parameter for certificate issues
-          log-level: minimal # Replaces 'verbose' for detailed logs
-          exclude: |
-            **/.env
-            **/*.map
-      - name: Test Connection
-        run: |
-          echo "Testing connection to ${{ secrets.FTP_SERVER }}..."
-          curl -v ftp://${{ secrets.FTP_SERVER }}:21 --user ${{ secrets.FTP_USERNAME }}:${{ secrets.FTP_PASSWORD }}
