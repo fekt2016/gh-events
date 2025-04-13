@@ -28,7 +28,7 @@ jobs:
           local-dir: ./dist/
           server-dir: /home2/eazworld/public_html/
           security: loose # Correct parameter for certificate issues
-          log-level: debug # Replaces 'verbose' for detailed logs
+          log-level: minimal # Replaces 'verbose' for detailed logs
           exclude: |
             **/.env
             **/*.map
