@@ -38,10 +38,11 @@ jobs:
           dangerous-clean-slate: false
       - name: Verify Build Output
         run: ls -la ./dist
-
-      - name: Test FTP Connection
+      - name: Debug FTP Deployment
         run: |
-          echo "Testing connection to ${{ secrets.FTP_SERVER }}..."
+          echo "Local files to deploy:"
+          ls -la ./dist/
+          echo "Attempting to list target directory:"
           lftp -e "set ftp:ssl-force true; ls /home2/eazworld/public_html/; quit" \
           -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} \
           ${{ secrets.FTP_SERVER }}
