@@ -9,20 +9,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
-      - name: Build React App
+      - name: Use Node.js 20
+        uses: actions/setup-node@v2
+        with:
+          node-version: "20"
+      - name: build Project
         run: |
           npm install
           npm run build
-          echo "Build contents:"
-          ls -la ./dist/
-
       - name: FTP Deploy
         uses: SamKirkland/FTP-Deploy-Action@4.3.0
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ${{ secrets.FTP_PROTOCOL }}
           port: 21
           local-dir: ./dist/
           server-dir: public_html/
