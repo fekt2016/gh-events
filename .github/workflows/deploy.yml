@@ -26,14 +26,14 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           port: 21
-          protocol: ftps
+          protocol: ftp
           local-dir: ./dist/
           server-dir: /home2/eazworld/public_html/
           exclude: |
             **/.env
             **/*.map
           verbose: true
-          security: strict
+          security: allow # Most permissive
 
       # Verification step (no lftp required)
       - name: Verify Deployment
