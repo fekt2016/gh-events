@@ -28,12 +28,12 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           port: ${{ secrets.FTP_PORT }}
-          # local-dir: ./frontend/dist/
-          # server-dir: ./public_html/eazworld/
+          local-dir: ./dist
+          server-dir: ./public_html/eazworld/
       - name: Verify Deployment
         run: |
           echo "Deployed files:"
-          curl -s https://yourdomain.com/your-app-folder/ | grep "Your App Name"
+          curl -s https://eazworld/public_html/ | grep "Your App Name"
 
       # Deploy Backend (Express.js) via FTP
       # - name: FTP Deploy Backend
