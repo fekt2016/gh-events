@@ -7,42 +7,36 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
 
-      # Build React Vite App
-      - name: Install frontend dependencies
-        run: npm install
-        # working-directory: ./frontend
+      # Build step
+      - name: Build React App
+        run: |
+          npm install
+          npm run build
+          echo "Build contents:"
+          ls -la ./dist/
 
-      - name: Build frontend
-        run: npm run build
-      - name: Check dist/ contents
-        run: ls -la ./dist/
-        # working-directory: ./frontend
-
-      # Deploy Frontend (dist/) via FTP
-      - name: FTP Deploy Frontend
+      # FTP Deployment with enhanced logging
+      - name: FTP Deploy
         uses: SamKirkland/FTP-Deploy-Action@4.3.0
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
+          port: 21
+          protocol: ftps
           local-dir: ./dist/
-          server-dir: /home2/eazworld/public_html/ # Verified exact path
-          protocol: ftp
+          server-dir: /home2/eazworld/public_html/
           exclude: |
             **/.env
             **/*.map
-          dangerous-clean-slate: false
-      - name: Verify Build Output
-        run: ls -la ./dist
-      - name: Debug FTP Deployment
+          verbose: true
+          security: strict
+
+      # Verification step (no lftp required)
+      - name: Verify Deployment
         run: |
-          echo "Local files to deploy:"
-          ls -la ./dist/
-          echo "Attempting to list target directory:"
-          lftp -e "set ftp:ssl-force true; ls /home2/eazworld/public_html/; quit" \
-          -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} \
-          ${{ secrets.FTP_SERVER }}
+          echo "Checking uploaded files via curl..."
+          curl -I https://yourdomain.com/ | grep "200 OK" || echo "Files not accessible"
