@@ -27,7 +27,7 @@ jobs:
           protocol: ftps-legacy
           local-dir: ./dist/
           server-dir: /home2/eazworld/public_html/
-          security: allow # Correct parameter for certificate issues
+          security: loose # Correct parameter for certificate issues
           log-level: minimal # Replaces 'verbose' for detailed logs
           exclude: |
             **/.env
