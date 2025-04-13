@@ -31,6 +31,5 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./dist/
           server-dir: /home2/eazworld/public_html/ # Verified exact path
-          protocol: ftpes
-      - name: Verify Build Output
+          protocol: ftpe      - name: Verify Build Output
         run: ls -la ./dist
