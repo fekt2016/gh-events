@@ -27,6 +27,6 @@ jobs:
           protocol: ${{ secrets.FTP_PROTOCOL }}
           port: 21
           local-dir: ./dist/
-          server-dir: "public_html/" # Adjust based on FTP root
+          server-dir: "/public_html" # Adjust based on FTP root
           passive: true # Required for most cPanel servers
           dangerous-clean-slate: true
