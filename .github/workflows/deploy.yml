@@ -27,4 +27,4 @@ jobs:
           protocol: ${{ secrets.FTP_PROTOCOL }}
           port: 21
           local-dir: ./dist/
-          server-dir: ./public_html
+          server-dir: ./
