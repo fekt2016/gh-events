@@ -17,11 +17,11 @@ jobs:
         run: |
           npm install
           npm run build
-      - name: 🚚 Install Composer Dependencies SITE
-        working-directory: ./
-        run: composer install --prefer-dist
-      - name: 🚚 Install Composer Dependencies ADM
-        working-directory: ./public/adm
+      # - name: 🚚 Install Composer Dependencies SITE
+      #   working-directory: ./
+      #   run: composer install --prefer-dist
+      # - name: 🚚 Install Composer Dependencies ADM
+      #   working-directory: ./public/adm
         run: composer install --prefer-dist
       - name: FTP Deploy
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
